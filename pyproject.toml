@@ -1,5 +1,5 @@
 [project]
-name = "issue-manager"
+name = "src"
 version = "0.1.0"
 description = "Simple task manager with CRUD API using FastAPI"
 authors = [

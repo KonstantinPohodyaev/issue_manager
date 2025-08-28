@@ -2,8 +2,8 @@ from uuid import UUID
 
 from sqlalchemy.orm import Mapped, mapped_column
 
-from issue_manager.models.base import BaseModel
-from issue_manager.database.enums import StatusEnum
+from src.models.base import BaseModel
+from src.database.enums import StatusEnum
 
 
 class Task(BaseModel):
