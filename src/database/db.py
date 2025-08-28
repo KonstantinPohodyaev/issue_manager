@@ -6,7 +6,7 @@ from sqlalchemy.orm import sessionmaker
 from src.core.config import settings
 
 
-if settings.DEBUG:
+if settings.debug:
     DB_URL = settings.test_db_url
 else:
     DB_URL = settings.get_db_url
