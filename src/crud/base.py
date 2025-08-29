@@ -24,8 +24,8 @@ class BaseCRUD:
     ):
         return (
             await session.execute(
-                select(self.model)
-            ).where(self.model.uuid == uuid)
+                select(self.model).where(self.model.uuid == uuid)
+            )
         ).scalar()
 
     async def create(
@@ -93,7 +93,6 @@ class BaseCRUD:
             await session.delete(task)
             if commit_on:
                 await session.commit()
-            return task
         except SQLAlchemyError as error:
             await session.rollback()
             raise HTTPException(

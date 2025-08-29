@@ -1,4 +1,4 @@
-from uuid import UUID
+from uuid import UUID, uuid4
 
 from sqlalchemy.orm import Mapped, mapped_column
 
@@ -8,7 +8,7 @@ from src.database.enums import StatusEnum
 
 class Task(BaseModel):
     uuid: Mapped[UUID] = mapped_column(
-        primary_key=True, unique=True
+        primary_key=True, default=uuid4
     )
     title: Mapped[str] = mapped_column(
         nullable=False
