@@ -1,11 +1,11 @@
 # 📝 Issue Manager
 
-![FastAPI](https://img.shields.io/badge/FastAPI-0.116.1-0?logo=fastapi&logoColor=white&labelColor=009688&color=009688)  
-![SQLAlchemy](https://img.shields.io/badge/SQLAlchemy-2.0.40-orange?logo=sqlalchemy)  
-![Alembic](https://img.shields.io/badge/Alembic-1.16.4-3796b0?logo=alembic)  
-![Python](https://img.shields.io/badge/Python-3.12-3776AB?logo=python)  
-![pytest](https://img.shields.io/badge/pytest-8.4.1-ff69b4?logo=python)  
-![uvicorn](https://img.shields.io/badge/uvicorn-0.35.0-black?logo=fastapi)  
+![FastAPI](https://img.shields.io/badge/FastAPI-0.116.1-0?logo=fastapi&logoColor=white&labelColor=009688&color=009688)
+![SQLAlchemy](https://img.shields.io/badge/SQLAlchemy-2.0.40-orange?logo=sqlalchemy)
+![Alembic](https://img.shields.io/badge/Alembic-1.16.4-3796b0?logo=alembic)
+![Python](https://img.shields.io/badge/Python-3.12-3776AB?logo=python)
+![pytest](https://img.shields.io/badge/pytest-8.4.1-ff69b4?logo=python)
+![uvicorn](https://img.shields.io/badge/uvicorn-0.35.0-black?logo=fastapi)
 
 > Test assignment: Task Manager with CRUD operations and tests.
 
@@ -38,7 +38,6 @@
 
 ```bash
 git clone https://github.com/KonstantinPohodyaev/issue_manager.git
-cd issue_manager
 ```
 
 Install Poetry (if not installed)::
@@ -53,7 +52,7 @@ Active virtual environment:
 cd issue_manager
 poetry env activate
 # copy your line from terminale like this and press ENTER
-# source /Users/kspohodyaev/Library/Caches/pypoetry/virtualenvs/src-w3klOcYr-py3.12/bin/activate
+source /Users/kspohodyaev/Library/Caches/pypoetry/virtualenvs/src-w3klOcYr-py3.12/bin/activate
 ```
 
 Download requirements
