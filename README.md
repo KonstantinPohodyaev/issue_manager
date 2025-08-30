@@ -132,6 +132,15 @@ _API`s url ```http://127.0.0.1/docs```_
 
 ---
 
+## Run testing
+
+### Write `DEBUG=1' in `.env`
+
+### Run
+```bash
+pytest
+```
+
 ## 👨‍💻 Author
 
 **Pohodyaev Konstantin**  
