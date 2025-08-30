@@ -1,16 +1,20 @@
 from uuid import UUID
 
-from fastapi import APIRouter, status, Depends
+from fastapi import APIRouter, Body, Depends, status
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from src.schemas.task import TaskRead, TaskCreate, TaskUpdate
-from src.database.db import get_async_session
 from src.api.validators import (
     check_task_exists_by_uuid,
     completed_task_can_not_be_update,
 )
 from src.crud.task import task_crud
-
+from src.database.db import get_async_session
+from src.schemas.task import (
+    TaskCreate,
+    TaskRead,
+    TaskUpdate,
+    TASK_CREATE_JSON_EXAMPLES,
+)
 
 router = APIRouter()
 
@@ -40,14 +44,18 @@ async def get_task_by_id(
     await check_task_exists_by_uuid(task_uuid, session)
     return await task_crud.get(task_uuid, session)
 
+
 @router.post(
     '',
     status_code=status.HTTP_201_CREATED,
     response_model=TaskRead,
     response_model_exclude_none=True
 )
-async def get_task_by_id(
-    create_schema: TaskCreate,
+async def create_task(
+    create_schema: TaskCreate = Body(
+        ...,
+        openapi_examples=TASK_CREATE_JSON_EXAMPLES
+    ),
     session: AsyncSession = Depends(get_async_session),
 ):
     return await task_crud.create(create_schema, session)
@@ -84,5 +92,5 @@ async def delete_task(
     await check_task_exists_by_uuid(task_uuid, session)
     return await task_crud.delete(
         await task_crud.get(task_uuid, session),
-        session
+        session,
     )

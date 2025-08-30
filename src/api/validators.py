@@ -3,9 +3,9 @@ from uuid import UUID
 from fastapi import HTTPException, status
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from src.models.task import Task
 from src.crud.task import task_crud
 from src.database.enums import StatusEnum
+from src.models.task import Task
 
 
 async def check_task_exists_by_uuid(

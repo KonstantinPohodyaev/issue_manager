@@ -1,6 +1,10 @@
 import os
 
 from pydantic_settings import BaseSettings
+from dotenv import load_dotenv
+
+
+load_dotenv()
 
 
 class Settings(BaseSettings):
@@ -13,17 +17,21 @@ class Settings(BaseSettings):
     db_host: str = os.getenv('DB_HOST', 'db')
     db_port: str = os.getenv('DB_PORT', '5432')
     db_name: str = os.getenv('DB_NAME', 'db')
-    test_db_url: str = 'sqlite+aiosqlite:///test_db.db'
+    local_db_url: str = 'sqlite+aiosqlite:///issue_megener.db'
     debug: bool = bool(os.getenv('DEBUG', 'True'))
+
 
     @property
     def get_db_url(self):
-        return (
-            f'{self.db_dialect} + {self.db_driver}://'
-            f'{self.db_user}:{self.db_password}@'
-            f'{self.db_host}:{self.db_port}/'
-            f'{self.db_name}'
-        )
+        if self.debug:
+            return self.local_db_url
+        else:
+            return (
+                f'{self.db_dialect}+{self.db_driver}://'
+                f'{self.db_user}:{self.db_password}@'
+                f'{self.db_host}:{self.db_port}/'
+                f'{self.db_name}'
+            )
 
 
 settings = Settings()

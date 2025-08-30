@@ -4,11 +4,10 @@ from logging.config import fileConfig
 from sqlalchemy import pool
 from sqlalchemy.engine import Connection
 from sqlalchemy.ext.asyncio import async_engine_from_config
-from src.models.base import BaseModel
-from src.core.config import settings
 
 from alembic import context
-
+from src.core.config import settings
+from src.models.base import BaseModel
 
 config = context.config
 
@@ -16,7 +15,7 @@ if config.config_file_name is not None:
     fileConfig(config.config_file_name)
 
 target_metadata = BaseModel.metadata
-config.set_main_option('sqlalchemy.url', settings.test_db_url)
+config.set_main_option('sqlalchemy.url', settings.get_db_url)
 
 
 def run_migrations_offline() -> None:

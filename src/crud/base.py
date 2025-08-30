@@ -2,8 +2,8 @@ from uuid import UUID
 
 from fastapi import HTTPException, status
 from sqlalchemy import select
-from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.exc import IntegrityError, SQLAlchemyError
+from sqlalchemy.ext.asyncio import AsyncSession
 
 
 class BaseCRUD:
@@ -18,8 +18,8 @@ class BaseCRUD:
         ).scalars().all()
 
     async def get(
-        self, 
-        uuid: UUID, 
+        self,
+        uuid: UUID,
         session: AsyncSession,
     ):
         return (
@@ -29,8 +29,8 @@ class BaseCRUD:
         ).scalar()
 
     async def create(
-        self, 
-        create_schema, 
+        self,
+        create_schema,
         session: AsyncSession,
         commit_on: bool = True,
     ):

@@ -6,16 +6,11 @@ from sqlalchemy.orm import sessionmaker
 from src.core.config import settings
 
 
-if settings.debug:
-    DB_URL = settings.test_db_url
-else:
-    DB_URL = settings.get_db_url
-
-
-engine = create_async_engine(DB_URL)
+engine = create_async_engine(settings.get_db_url)
 AsyncSessionLocal = sessionmaker(
     engine, class_=AsyncSession, expire_on_commit=False
 )
+
 
 async def get_async_session() -> AsyncGenerator[AsyncSession, Any]:
     async with AsyncSessionLocal() as async_session:
