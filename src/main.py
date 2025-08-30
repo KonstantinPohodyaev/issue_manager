@@ -5,21 +5,21 @@ from src.core.config import settings
 
 
 APP_DESCRIPTION = """
-This API allows you to manage tasks:  
-- Create tasks  
-- Retrieve tasks  
-- Update tasks  
-- Delete tasks  
+This API allows you to manage tasks:
+- Create tasks
+- Retrieve tasks
+- Update tasks
+- Delete tasks
 
 ## Models
 - **Task** has:
 
-  - `uuid` — unique identifier  
+  - `uuid` — unique identifier
 
-  - `title` — short title  
+  - `title` — short title
 
-  - `description` — optional details  
-  
+  - `description` — optional details
+
   - `status` — current state (`created`, `in_progress`, `done`)
 """
 

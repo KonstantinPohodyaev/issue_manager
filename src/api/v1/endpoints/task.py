@@ -35,9 +35,9 @@ async def get_all_tasks(
     """
     Retrieve all tasks from the database.
 
-    - **uuid**: unique identifier of the task  
-    - **title**: short title of the task  
-    - **description**: optional description  
+    - **uuid**: unique identifier of the task
+    - **title**: short title of the task
+    - **description**: optional description
     - **status**: current status (`created`, `in_progress`, `done`)
     """
     return await task_crud.get_all(session)
@@ -57,7 +57,7 @@ async def get_task_by_id(
     """
     Retrieve a single task by its unique UUID.
 
-    - **task_uuid**: unique identifier of the task  
+    - **task_uuid**: unique identifier of the task
     Returns task details if it exists, otherwise raises a 404 error.
     """
     await check_task_exists_by_uuid(task_uuid, session)
@@ -81,9 +81,9 @@ async def create_task(
     """
     Create a new task.
 
-    - **title**: short title of the task (required)  
-    - **description**: optional description  
-    - **status**: initial status (`created` by default)  
+    - **title**: short title of the task (required)
+    - **description**: optional description
+    - **status**: initial status (`created` by default)
     """
     return await task_crud.create(create_schema, session)
 
@@ -103,8 +103,8 @@ async def update_task(
     """
     Partially update an existing task.
 
-    - **task_uuid**: unique identifier of the task  
-    - **update_schema**: fields to update  
+    - **task_uuid**: unique identifier of the task
+    - **update_schema**: fields to update
     Completed tasks cannot be updated.
     """
     task = await check_task_exists_by_uuid(task_uuid, session)
@@ -128,8 +128,8 @@ async def delete_task(
     """
     Delete a task by its unique UUID.
 
-    - **task_uuid**: unique identifier of the task  
-    Removes the task from the database if it exists, otherwise raises a 404 error.
+    - **task_uuid**: unique identifier of the task
+    Removes the task from the database if it exists.
     """
     await check_task_exists_by_uuid(task_uuid, session)
     return await task_crud.delete(

@@ -8,6 +8,25 @@ load_dotenv()
 
 
 class Settings(BaseSettings):
+    """
+    Application settings loaded from environment variables.
+
+    Attributes:
+        fastapi_title (str): Title for FastAPI docs.
+        fastapi_description (str): Description for FastAPI docs.
+        db_dialect (str): Database dialect for SQLAlchemy.
+        db_driver (str): Database driver for SQLAlchemy.
+        db_user (str): Database username.
+        db_password (str): Database password.
+        db_host (str): Database host.
+        db_port (str): Database port.
+        db_name (str): Database name.
+        local_db_url (str): URL for local SQLite database
+            - (used in debug mode).
+        debug (bool): Debug mode flag.
+            - If True, use SQLite; otherwise, use production DB.
+    """
+
     fastapi_title: str = os.getenv('FASTAPI_TITLE', 'Issue_manager')
     fastapi_description: str = os.getenv('FASTAPI_DESCRIPTION', '')
     db_dialect: str = os.getenv('DB_DIALECT', 'postgresql')
@@ -20,9 +39,25 @@ class Settings(BaseSettings):
     local_db_url: str = 'sqlite+aiosqlite:///issue_megener.db'
     debug: bool = bool(os.getenv('DEBUG', 'True'))
 
-
     @property
     def get_db_url(self):
+        """
+        Application settings loaded from environment variables.
+
+        Attributes:
+            fastapi_title (str): Title for FastAPI docs.
+            fastapi_description (str): Description for FastAPI docs.
+            db_dialect (str): Database dialect for SQLAlchemy.
+            db_driver (str): Database driver for SQLAlchemy.
+            db_user (str): Database username.
+            db_password (str): Database password.
+            db_host (str): Database host.
+            db_port (str): Database port.
+            db_name (str): Database name.
+            local_db_url (str): URL for local SQLite database.
+            debug (bool): Debug mode flag.
+                - If True, use SQLite; otherwise, use production DB.
+        """
         if self.debug:
             return self.local_db_url
         else:
